@@ -1,0 +1,56 @@
+package com.paulohc.movlist.ui.components
+
+import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImage
+import com.paulohc.movlist.domain.MovieInfo
+import com.paulohc.movlist.util.Constants
+
+@Composable
+fun Section(
+    movies: List<MovieInfo>,
+    title: String? = null,
+) {
+    Column(
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        if (!title.isNullOrBlank()) {
+            Text(
+                modifier = Modifier.padding(start = 20.dp),
+                text = title,
+                color = Color.Black,
+                fontSize = 40.sp
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+        }
+        LazyRow(
+            modifier = Modifier.fillMaxWidth(),
+            contentPadding = PaddingValues(horizontal = 20.dp),
+            horizontalArrangement = Arrangement.spacedBy(20.dp)
+        ) {
+            items(movies) {
+                AsyncImage(
+                    modifier = Modifier
+                        .height(200.dp)
+                        .width(150.dp)
+                        .clip(shape = RoundedCornerShape(8.dp))
+                        .background(Color.Gray),
+                    model = "${Constants.TMDB_IMAGE_BASE_URL}${it.posterPath}",
+                    contentDescription = "",
+                    contentScale = ContentScale.Crop,
+                )
+            }
+        }
+    }
+}
