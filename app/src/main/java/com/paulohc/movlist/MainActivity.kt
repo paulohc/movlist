@@ -4,13 +4,11 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Surface
-import androidx.compose.runtime.collectAsState
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.*
 import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.paulohc.movlist.ui.screens.home.HomeScreen
-import com.paulohc.movlist.ui.screens.home.HomeViewModel
+import androidx.navigation.compose.rememberNavController
+import com.paulohc.movlist.navigation.*
 import com.paulohc.movlist.ui.theme.MovlistTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -25,12 +23,18 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    val viewModel: HomeViewModel = hiltViewModel()
-                    val state = viewModel.state.collectAsState().value
-                    HomeScreen(
-                        state = state,
-                        fetchMovies = viewModel::fetchMovies
-                    )
+                    val navController = rememberNavController()
+                    Scaffold(
+                        bottomBar = {
+                            CustomNavigationBar(navController = navController)
+                        }
+                    ) { innerPadding ->
+                        SetupNavGraph(
+                            modifier = Modifier.padding(innerPadding),
+                            navController = navController,
+                            startDestination = Screen.Home,
+                        )
+                    }
                 }
             }
         }
