@@ -39,6 +39,7 @@ fun DetailsScreen(
         ) {
             AsyncImage(
                 modifier = Modifier
+                    .height(230.dp)
                     .fillMaxWidth()
                     .background(Color.Gray),
                 model = "${Constants.TMDB_BACKDROP_BASE_URL}${movieDetails?.backdropPath}",
