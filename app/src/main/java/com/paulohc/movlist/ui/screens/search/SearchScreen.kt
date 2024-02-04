@@ -5,8 +5,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.*
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
@@ -15,10 +14,8 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.paulohc.movlist.R
 import com.paulohc.movlist.util.Constants
@@ -39,7 +36,7 @@ fun SearchScreen(
     Column {
         Column(
             modifier = Modifier
-                .height(100.dp)
+                .heightIn(100.dp)
                 .fillMaxWidth(),
         ) {
             OutlinedTextField(
@@ -49,9 +46,15 @@ fun SearchScreen(
                     .padding(top = 20.dp),
                 value = text,
                 onValueChange = { text = it },
-                label = { Text(stringResource(id = R.string.search)) },
-                textStyle = TextStyle(fontSize = 20.sp),
+                textStyle = MaterialTheme.typography.headlineMedium,
+                label = {
+                    Text(
+                        text = stringResource(id = R.string.search),
+                        style = MaterialTheme.typography.headlineSmall,
+                    )
+                },
             )
+            Spacer(modifier = Modifier.height(2.dp))
         }
         if (searchedMovies == null) {
             Column(
@@ -61,7 +64,7 @@ fun SearchScreen(
             ) {
                 Text(
                     text = stringResource(id = R.string.no_results),
-                    fontSize = 40.sp,
+                    style = MaterialTheme.typography.displayMedium,
                     textAlign = TextAlign.Center,
                 )
             }
