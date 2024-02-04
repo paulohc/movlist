@@ -6,6 +6,14 @@ import retrofit2.http.*
 
 interface MovieService {
     @Headers("Authorization: Bearer ${BuildConfig.TMDB_API_TOKEN}")
+    @GET("search/movie")
+    suspend fun searchMovie(
+        @Query("query") query: String,
+        @Query("page") page: Int = 1,
+        @Query("language") language: String = "en-US",
+    ): Result<MovieSearchResult>
+
+    @Headers("Authorization: Bearer ${BuildConfig.TMDB_API_TOKEN}")
     @GET("trending/movie/day")
     suspend fun getTrendingMovies(
         @Query("language") language: String = "en-US",
