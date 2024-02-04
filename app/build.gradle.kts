@@ -24,7 +24,7 @@ android {
         buildConfigField(
             "String",
             "TMDB_API_TOKEN",
-            "\"\""
+            "\"${env.TMDB_API_TOKEN.orElse("")}\""
         )
     }
 
