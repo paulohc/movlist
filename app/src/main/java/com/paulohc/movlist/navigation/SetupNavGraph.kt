@@ -6,6 +6,8 @@ import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import com.paulohc.movlist.ui.screens.details.DetailsScreen
+import com.paulohc.movlist.ui.screens.details.DetailsViewModel
 import com.paulohc.movlist.ui.screens.home.HomeScreen
 import com.paulohc.movlist.ui.screens.home.HomeViewModel
 import com.paulohc.movlist.ui.screens.search.SearchScreen
@@ -27,7 +29,12 @@ fun SetupNavGraph(
             val state = viewModel.state.collectAsState().value
             HomeScreen(
                 state = state,
-                fetchMovies = viewModel::fetchMovies
+                fetchMovies = viewModel::fetchMovies,
+                navigateToDetails = {
+                    navController.navigate(
+                        Screen.Details.withArgs(movieId = it)
+                    )
+                }
             )
         }
         composable(Screen.Search) {
@@ -35,7 +42,20 @@ fun SetupNavGraph(
             val state = viewModel.state.collectAsState().value
             SearchScreen(
                 state = state,
-                searchMovie = viewModel::searchMovie,
+                searchMovies = viewModel::searchMovies,
+                navigateToDetails = {
+                    navController.navigate(
+                        Screen.Details.withArgs(movieId = it)
+                    )
+                }
+            )
+        }
+        composable(Screen.Details) {
+            val viewModel: DetailsViewModel = hiltViewModel()
+            val state = viewModel.state.collectAsState().value
+            DetailsScreen(
+                state = state,
+                navigateBack = navController::popBackStack
             )
         }
     }

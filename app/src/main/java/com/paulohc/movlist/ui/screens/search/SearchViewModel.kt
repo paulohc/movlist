@@ -23,7 +23,7 @@ class SearchViewModel @Inject constructor(
     val state = _state.asStateFlow()
     private var queryJob: Job? = null
 
-    fun searchMovie(query: String) {
+    fun searchMovies(query: String) {
         queryJob?.cancel()
 
         if (query.isBlank()) {
@@ -33,7 +33,7 @@ class SearchViewModel @Inject constructor(
 
         queryJob = viewModelScope.launch {
             delay(DEBOUNCE_TIME_MILLIS)
-            val result = service.searchMovie(query)
+            val result = service.searchMovies(query)
             _state.update {
                 it.copy(searchedMovies = result.getOrNull()?.results)
             }

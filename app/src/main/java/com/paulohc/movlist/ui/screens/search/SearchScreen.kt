@@ -1,6 +1,7 @@
 package com.paulohc.movlist.ui.screens.search
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.grid.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -25,13 +26,14 @@ import com.paulohc.movlist.util.Constants
 @Composable
 fun SearchScreen(
     state: SearchScreenState,
-    searchMovie: (String) -> Unit,
+    searchMovies: (String) -> Unit,
+    navigateToDetails: (Int) -> Unit,
 ) {
     val searchedMovies = state.searchedMovies
     var text by rememberSaveable { mutableStateOf("") }
 
     LaunchedEffect(text) {
-        searchMovie(text)
+        searchMovies(text)
     }
 
     Column {
@@ -74,11 +76,12 @@ fun SearchScreen(
                 items(searchedMovies) {
                     AsyncImage(
                         modifier = Modifier
+                            .clickable { navigateToDetails(it.id) }
                             .height(200.dp)
                             .width(150.dp)
                             .clip(shape = RoundedCornerShape(8.dp))
                             .background(Color.Gray),
-                        model = "${Constants.TMDB_IMAGE_BASE_URL}${it.posterPath}",
+                        model = "${Constants.TMDB_POSTER_BASE_URL}${it.posterPath}",
                         contentDescription = it.title,
                         contentScale = ContentScale.Crop,
                     )

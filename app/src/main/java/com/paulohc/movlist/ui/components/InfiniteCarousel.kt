@@ -1,7 +1,6 @@
 package com.paulohc.movlist.ui.components
 
-import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.pager.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -15,6 +14,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.paulohc.movlist.domain.MovieInfo
+import com.paulohc.movlist.util.Constants
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collectLatest
 
@@ -23,6 +23,7 @@ import kotlinx.coroutines.flow.collectLatest
 fun InfiniteCarousel(
     movies: List<MovieInfo>,
     title: String? = null,
+    onCardPress: ((Int) -> Unit)? = null,
 ) {
     val initial = remember {
         val init = Short.MAX_VALUE.toInt() / 2
@@ -62,13 +63,17 @@ fun InfiniteCarousel(
             contentPadding = PaddingValues(horizontal = 100.dp),
         ) { page ->
             val newPage = page % movies.size
+            val movie = movies[newPage]
             AsyncImage(
                 modifier = Modifier
+                    .clickable {
+                        onCardPress?.invoke(movie.id)
+                    }
                     .height(300.dp)
                     .fillMaxWidth()
                     .clip(shape = RoundedCornerShape(10.dp))
                     .background(Color.Gray),
-                model = "https://image.tmdb.org/t/p/w500/${movies[newPage].posterPath}",
+                model = "${Constants.TMDB_POSTER_BASE_URL}${movie.posterPath}",
                 contentDescription = "",
                 contentScale = ContentScale.Crop,
             )

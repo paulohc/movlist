@@ -24,6 +24,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     val navController = rememberNavController()
+
                     Scaffold(
                         bottomBar = {
                             CustomNavigationBar(navController = navController)

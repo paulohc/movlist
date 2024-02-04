@@ -13,9 +13,9 @@ import com.paulohc.movlist.ui.components.Section
 
 @Composable
 fun HomeScreen(
-    modifier: Modifier = Modifier,
     state: HomeState,
     fetchMovies: () -> Unit,
+    navigateToDetails: (Int) -> Unit,
 ) {
     LaunchedEffect(Unit) {
         fetchMovies()
@@ -27,7 +27,8 @@ fun HomeScreen(
             state.trendingMovies?.let {
                 InfiniteCarousel(
                     movies = it,
-                    stringResource(id = R.string.trending_movies)
+                    title = stringResource(id = R.string.trending_movies),
+                    onCardPress = navigateToDetails,
                 )
             }
         }
@@ -36,7 +37,8 @@ fun HomeScreen(
             state.popularMovies?.let {
                 Section(
                     movies = it,
-                    title = stringResource(id = R.string.popular_movies)
+                    title = stringResource(id = R.string.popular_movies),
+                    onCardPress = navigateToDetails,
                 )
             }
         }
@@ -45,7 +47,8 @@ fun HomeScreen(
             state.topRatedMovies?.let {
                 Section(
                     movies = it,
-                    title = stringResource(id = R.string.top_rated_movies)
+                    title = stringResource(id = R.string.top_rated_movies),
+                    onCardPress = navigateToDetails,
                 )
             }
         }
@@ -54,7 +57,8 @@ fun HomeScreen(
             state.upcomingMovies?.let {
                 Section(
                     movies = it,
-                    title = stringResource(id = R.string.upcoming_movies)
+                    title = stringResource(id = R.string.upcoming_movies),
+                    onCardPress = navigateToDetails,
                 )
             }
         }
