@@ -1,6 +1,7 @@
 package com.paulohc.movlist.ui.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -21,6 +22,7 @@ import com.paulohc.movlist.util.Constants
 fun Section(
     movies: List<MovieInfo>,
     title: String? = null,
+    onCardPress: ((Int) -> Unit)? = null,
 ) {
     Column(
         modifier = Modifier.fillMaxWidth()
@@ -42,11 +44,14 @@ fun Section(
             items(movies) {
                 AsyncImage(
                     modifier = Modifier
+                        .clickable {
+                            onCardPress?.invoke(it.id)
+                        }
                         .height(200.dp)
                         .width(150.dp)
                         .clip(shape = RoundedCornerShape(8.dp))
                         .background(Color.Gray),
-                    model = "${Constants.TMDB_IMAGE_BASE_URL}${it.posterPath}",
+                    model = "${Constants.TMDB_POSTER_BASE_URL}${it.posterPath}",
                     contentDescription = "",
                     contentScale = ContentScale.Crop,
                 )

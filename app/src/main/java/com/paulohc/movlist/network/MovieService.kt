@@ -1,13 +1,21 @@
 package com.paulohc.movlist.network
 
 import com.paulohc.movlist.BuildConfig
+import com.paulohc.movlist.domain.MovieInfo
 import com.paulohc.movlist.domain.MovieSearchResult
 import retrofit2.http.*
 
 interface MovieService {
     @Headers("Authorization: Bearer ${BuildConfig.TMDB_API_TOKEN}")
+    @GET("movie/{movie_id}")
+    suspend fun getMovieDetails(
+        @Path("movie_id") movieId: Int,
+        @Query("language") language: String = "en-US",
+    ): Result<MovieInfo>
+
+    @Headers("Authorization: Bearer ${BuildConfig.TMDB_API_TOKEN}")
     @GET("search/movie")
-    suspend fun searchMovie(
+    suspend fun searchMovies(
         @Query("query") query: String,
         @Query("page") page: Int = 1,
         @Query("language") language: String = "en-US",
