@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -32,7 +33,7 @@ fun Section(
                 modifier = Modifier.padding(start = 20.dp),
                 text = title,
                 color = Color.Black,
-                fontSize = 40.sp
+                style = MaterialTheme.typography.displayMedium.copy(fontSize = 40.sp)
             )
             Spacer(modifier = Modifier.height(20.dp))
         }

@@ -21,7 +21,7 @@ fun HomeScreen(
         fetchMovies()
     }
     LazyColumn(
-        contentPadding = PaddingValues(bottom = 40.dp)
+        contentPadding = PaddingValues(vertical = 40.dp)
     ) {
         item {
             state.trendingMovies?.let {
