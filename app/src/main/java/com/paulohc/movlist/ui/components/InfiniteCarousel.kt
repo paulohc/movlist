@@ -74,7 +74,7 @@ fun InfiniteCarousel(
                     .clip(shape = RoundedCornerShape(10.dp))
                     .background(Color.Gray),
                 model = "${Constants.TMDB_POSTER_BASE_URL}${movie.posterPath}",
-                contentDescription = "",
+                contentDescription = movie.title,
                 contentScale = ContentScale.Crop,
             )
         }

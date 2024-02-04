@@ -7,4 +7,5 @@
     <string name="top_rated_movies">Top Rated Movies</string>
     <string name="upcoming_movies">Upcoming Movies</string>
     <string name="no_results">No Results</string>
+    <string name="navigate_back">Navigate to Previous Screen</string>
 </resources>

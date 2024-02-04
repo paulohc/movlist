@@ -52,7 +52,7 @@ fun Section(
                         .clip(shape = RoundedCornerShape(8.dp))
                         .background(Color.Gray),
                     model = "${Constants.TMDB_POSTER_BASE_URL}${it.posterPath}",
-                    contentDescription = "",
+                    contentDescription = it.title,
                     contentScale = ContentScale.Crop,
                 )
             }
