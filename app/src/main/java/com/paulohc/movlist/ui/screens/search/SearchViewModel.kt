@@ -11,6 +11,7 @@ import javax.inject.Inject
 
 data class SearchScreenState(
     val searchedMovies: List<MovieInfo>? = null,
+    val failedToFetchData: Boolean = false,
 )
 
 private const val DEBOUNCE_TIME_MILLIS = 500L
@@ -27,7 +28,12 @@ class SearchViewModel @Inject constructor(
         queryJob?.cancel()
 
         if (query.isBlank()) {
-            _state.update { it.copy(searchedMovies = null) }
+            _state.update {
+                it.copy(
+                    searchedMovies = null,
+                    failedToFetchData = false
+                )
+            }
             return
         }
 
@@ -35,7 +41,10 @@ class SearchViewModel @Inject constructor(
             delay(DEBOUNCE_TIME_MILLIS)
             val result = service.searchMovies(query)
             _state.update {
-                it.copy(searchedMovies = result.getOrNull()?.results)
+                it.copy(
+                    searchedMovies = result.getOrNull()?.results,
+                    failedToFetchData = result.isFailure,
+                )
             }
         }
     }

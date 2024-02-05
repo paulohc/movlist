@@ -8,8 +8,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.paulohc.movlist.R
-import com.paulohc.movlist.ui.components.InfiniteCarousel
-import com.paulohc.movlist.ui.components.Section
+import com.paulohc.movlist.ui.components.*
 
 @Composable
 fun HomeScreen(
@@ -17,49 +16,66 @@ fun HomeScreen(
     fetchMovies: () -> Unit,
     navigateToDetails: (Int) -> Unit,
 ) {
+    val trendingMovies = state.trendingMovies
+    val popularMovies = state.popularMovies
+    val topRatedMovies = state.topRatedMovies
+    val upcomingMovies = state.upcomingMovies
+    val failedToFetchData = state.failedToFetchData
+
     LaunchedEffect(Unit) {
         fetchMovies()
     }
-    LazyColumn(
-        contentPadding = PaddingValues(vertical = 40.dp)
+
+    if (
+        failedToFetchData &&
+        trendingMovies == null &&
+        popularMovies == null &&
+        topRatedMovies == null &&
+        upcomingMovies == null
     ) {
-        item {
-            state.trendingMovies?.let {
-                InfiniteCarousel(
-                    movies = it,
-                    title = stringResource(id = R.string.trending_movies),
-                    onCardPress = navigateToDetails,
-                )
+        FallbackMessage(message = stringResource(id = R.string.check_internet_connection))
+    } else {
+        LazyColumn(
+            contentPadding = PaddingValues(vertical = 40.dp)
+        ) {
+            item {
+                trendingMovies?.let {
+                    InfiniteCarousel(
+                        movies = it,
+                        title = stringResource(id = R.string.trending_movies),
+                        onCardPress = navigateToDetails,
+                    )
+                }
             }
-        }
-        item {
-            Spacer(modifier = Modifier.height(50.dp))
-            state.popularMovies?.let {
-                Section(
-                    movies = it,
-                    title = stringResource(id = R.string.popular_movies),
-                    onCardPress = navigateToDetails,
-                )
+            item {
+                popularMovies?.let {
+                    Spacer(modifier = Modifier.height(50.dp))
+                    Section(
+                        movies = it,
+                        title = stringResource(id = R.string.popular_movies),
+                        onCardPress = navigateToDetails,
+                    )
+                }
             }
-        }
-        item {
-            Spacer(modifier = Modifier.height(50.dp))
-            state.topRatedMovies?.let {
-                Section(
-                    movies = it,
-                    title = stringResource(id = R.string.top_rated_movies),
-                    onCardPress = navigateToDetails,
-                )
+            item {
+                topRatedMovies?.let {
+                    Spacer(modifier = Modifier.height(50.dp))
+                    Section(
+                        movies = it,
+                        title = stringResource(id = R.string.top_rated_movies),
+                        onCardPress = navigateToDetails,
+                    )
+                }
             }
-        }
-        item {
-            Spacer(modifier = Modifier.height(50.dp))
-            state.upcomingMovies?.let {
-                Section(
-                    movies = it,
-                    title = stringResource(id = R.string.upcoming_movies),
-                    onCardPress = navigateToDetails,
-                )
+            item {
+                upcomingMovies?.let {
+                    Spacer(modifier = Modifier.height(50.dp))
+                    Section(
+                        movies = it,
+                        title = stringResource(id = R.string.upcoming_movies),
+                        onCardPress = navigateToDetails,
+                    )
+                }
             }
         }
     }

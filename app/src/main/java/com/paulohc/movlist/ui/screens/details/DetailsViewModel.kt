@@ -11,6 +11,7 @@ import javax.inject.Inject
 
 data class DetailsScreenState(
     val movieDetails: MovieInfo? = null,
+    val failedToFetchData: Boolean = false,
 )
 
 @HiltViewModel
@@ -31,7 +32,10 @@ class DetailsViewModel @Inject constructor(
         viewModelScope.launch {
             val result = service.getMovieDetails(movieId)
             _state.update {
-                it.copy(movieDetails = result.getOrNull())
+                it.copy(
+                    movieDetails = result.getOrNull(),
+                    failedToFetchData = result.isFailure,
+                )
             }
         }
     }
