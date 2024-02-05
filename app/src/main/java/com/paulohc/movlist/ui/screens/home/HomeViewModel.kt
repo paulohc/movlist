@@ -14,6 +14,7 @@ data class HomeState(
     val popularMovies: List<MovieInfo>? = null,
     val topRatedMovies: List<MovieInfo>? = null,
     val upcomingMovies: List<MovieInfo>? = null,
+    val failedToFetchData: Boolean = false,
 )
 
 @HiltViewModel
@@ -34,7 +35,10 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             val result = service.getTrendingMovies()
             _state.update {
-                it.copy(trendingMovies = result.getOrNull()?.results)
+                it.copy(
+                    trendingMovies = result.getOrNull()?.results,
+                    failedToFetchData = result.isFailure,
+                )
             }
         }
     }
@@ -43,7 +47,10 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             val result = service.getPopularMovies()
             _state.update {
-                it.copy(popularMovies = result.getOrNull()?.results)
+                it.copy(
+                    popularMovies = result.getOrNull()?.results,
+                    failedToFetchData = result.isFailure,
+                )
             }
         }
     }
@@ -52,7 +59,10 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             val result = service.getTopRatedMovies()
             _state.update {
-                it.copy(topRatedMovies = result.getOrNull()?.results)
+                it.copy(
+                    topRatedMovies = result.getOrNull()?.results,
+                    failedToFetchData = result.isFailure,
+                )
             }
         }
     }
@@ -61,7 +71,10 @@ class HomeViewModel @Inject constructor(
         viewModelScope.launch {
             val result = service.getUpcomingMovies()
             _state.update {
-                it.copy(upcomingMovies = result.getOrNull()?.results)
+                it.copy(
+                    upcomingMovies = result.getOrNull()?.results,
+                    failedToFetchData = result.isFailure,
+                )
             }
         }
     }

@@ -18,6 +18,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.paulohc.movlist.R
+import com.paulohc.movlist.ui.components.FallbackMessage
 import com.paulohc.movlist.util.Constants
 
 @Composable
@@ -27,6 +28,7 @@ fun SearchScreen(
     navigateToDetails: (Int) -> Unit,
 ) {
     val searchedMovies = state.searchedMovies
+    val failedToFetchData = state.failedToFetchData
     var text by rememberSaveable { mutableStateOf("") }
 
     LaunchedEffect(text) {
@@ -58,6 +60,12 @@ fun SearchScreen(
             Spacer(modifier = Modifier.height(2.dp))
         }
         if (searchedMovies == null) {
+            FallbackMessage(
+                message = stringResource(
+                    id = if (failedToFetchData) R.string.check_internet_connection
+                    else R.string.no_results,
+                )
+            )
             Column(
                 modifier = Modifier.fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,

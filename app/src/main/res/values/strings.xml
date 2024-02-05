@@ -8,4 +8,5 @@
     <string name="upcoming_movies">Upcoming Movies</string>
     <string name="no_results">No Results</string>
     <string name="navigate_back">Navigate to Previous Screen</string>
+    <string name="check_internet_connection">Check Your Internet Connection</string>
 </resources>
