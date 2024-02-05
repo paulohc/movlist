@@ -1,5 +1,7 @@
 package com.paulohc.movlist.navigation
 
+import androidx.compose.foundation.background
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -22,7 +24,8 @@ fun SetupNavGraph(
     NavHost(
         navController = navController,
         startDestination = startDestination.routePrefix,
-        modifier = modifier,
+        modifier = modifier
+            .background(MaterialTheme.colorScheme.primaryContainer),
     ) {
         composable(Screen.Home) {
             val viewModel: HomeViewModel = hiltViewModel()

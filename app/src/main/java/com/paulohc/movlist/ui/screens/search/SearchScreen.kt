@@ -51,6 +51,7 @@ fun SearchScreen(
                     Text(
                         text = stringResource(id = R.string.search),
                         style = MaterialTheme.typography.headlineSmall,
+                        color = MaterialTheme.colorScheme.onBackground,
                     )
                 },
             )
@@ -66,6 +67,7 @@ fun SearchScreen(
                     text = stringResource(id = R.string.no_results),
                     style = MaterialTheme.typography.displayMedium,
                     textAlign = TextAlign.Center,
+                    color = MaterialTheme.colorScheme.onBackground,
                 )
             }
         } else {
