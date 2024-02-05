@@ -78,13 +78,15 @@ fun DetailsScreen(
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.displayMedium,
                 fontWeight = FontWeight.Bold,
+                color = MaterialTheme.colorScheme.onBackground,
             )
 
             Spacer(modifier = Modifier.height(15.dp))
 
             Text(
                 text = movieDetails?.overview ?: "",
-                style = MaterialTheme.typography.headlineSmall
+                style = MaterialTheme.typography.headlineSmall,
+                color = MaterialTheme.colorScheme.onBackground,
             )
         }
     }

@@ -40,7 +40,8 @@ fun CustomNavigationBar(
                             imageVector = if (isSelected) item.selectedIcon
                             else item.unselectedIcon,
                             contentDescription = title,
-                            modifier = Modifier.size(33.dp)
+                            modifier = Modifier.size(33.dp),
+                            tint = MaterialTheme.colorScheme.onBackground,
                         )
                     },
                     label = {
@@ -48,7 +49,8 @@ fun CustomNavigationBar(
                             text = title,
                             style = MaterialTheme
                                 .typography
-                                .titleLarge.copy(fontSize = 20.sp)
+                                .titleLarge.copy(fontSize = 20.sp),
+                            color = MaterialTheme.colorScheme.onBackground,
                         )
                     },
                     selected = isSelected,

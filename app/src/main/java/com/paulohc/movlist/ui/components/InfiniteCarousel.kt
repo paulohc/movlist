@@ -55,7 +55,7 @@ fun InfiniteCarousel(
             Text(
                 modifier = Modifier.padding(start = 20.dp),
                 text = title,
-                color = Color.Black,
+                color = MaterialTheme.colorScheme.onBackground,
                 style = MaterialTheme.typography.displayMedium.copy(fontSize = 40.sp)
             )
             Spacer(modifier = Modifier.height(30.dp))
