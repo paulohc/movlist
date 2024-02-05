@@ -9,4 +9,6 @@
     <string name="no_results">No Results</string>
     <string name="navigate_back">Navigate to Previous Screen</string>
     <string name="check_internet_connection">Check Your Internet Connection</string>
+    <string name="release_date">Release Date:\ </string>
+    <string name="rate">Rate:\ </string>
 </resources>

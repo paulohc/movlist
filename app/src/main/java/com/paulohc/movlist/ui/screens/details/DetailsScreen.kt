@@ -78,6 +78,36 @@ fun DetailsScreen(
                     style = MaterialTheme.typography.headlineSmall,
                     color = MaterialTheme.colorScheme.onBackground,
                 )
+
+                Spacer(modifier = Modifier.height(20.dp))
+
+                Row {
+                    Text(
+                        text = stringResource(id = R.string.release_date),
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(
+                        text = "${movieDetails?.releaseDate}",
+                        style = MaterialTheme.typography.titleLarge,
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(10.dp))
+
+                Row {
+                    Text(
+                        text = stringResource(id = R.string.rate),
+                        style = MaterialTheme.typography.titleLarge,
+                        fontWeight = FontWeight.Bold
+                    )
+                    Text(
+                        text = "${String.format("%.1f", movieDetails?.voteAverage)}/10",
+                        style = MaterialTheme.typography.titleLarge,
+                    )
+                }
+
+                Spacer(modifier = Modifier.height(40.dp))
             }
         }
     }
