@@ -15,14 +15,14 @@ sealed class CustomNavigationBarItem(
     val selectedIcon: ImageVector,
     val unselectedIcon: ImageVector,
 ) {
-    object Home : CustomNavigationBarItem(
+    data object Home : CustomNavigationBarItem(
         screen = Screen.Home,
         title = R.string.home,
         selectedIcon = Icons.Filled.Home,
         unselectedIcon = Icons.Outlined.Home,
     )
 
-    object Search : CustomNavigationBarItem(
+    data object Search : CustomNavigationBarItem(
         screen = Screen.Search,
         title = R.string.search,
         selectedIcon = Icons.Filled.Search,

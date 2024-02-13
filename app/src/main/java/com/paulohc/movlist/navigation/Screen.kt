@@ -8,10 +8,10 @@ sealed class Screen(
     routePrefix: String,
     arguments: List<NamedNavArgument> = emptyList(),
 ) : BaseScreen(routePrefix = routePrefix, arguments = arguments) {
-    object Home : Screen(routePrefix = "home_screen")
-    object Search : Screen(routePrefix = "search_screen")
+    data object Home : Screen(routePrefix = "home_screen")
+    data object Search : Screen(routePrefix = "search_screen")
 
-    object Details : Screen(
+    data object Details : Screen(
         routePrefix = "details_screen",
         arguments = listOf(
             navArgument(name = ARG_MOVIE_ID) {

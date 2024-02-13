@@ -8,15 +8,11 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
-import com.paulohc.movlist.ui.screens.details.DetailsScreen
-import com.paulohc.movlist.ui.screens.details.DetailsViewModel
-import com.paulohc.movlist.ui.screens.home.HomeScreen
-import com.paulohc.movlist.ui.screens.home.HomeViewModel
-import com.paulohc.movlist.ui.screens.search.SearchScreen
-import com.paulohc.movlist.ui.screens.search.SearchViewModel
+import com.paulohc.movlist.ui.screen.*
+import com.paulohc.movlist.ui.viewmodel.*
 
 @Composable
-fun SetupNavGraph(
+fun RootNavGraph(
     navController: NavHostController,
     startDestination: Screen,
     modifier: Modifier = Modifier,

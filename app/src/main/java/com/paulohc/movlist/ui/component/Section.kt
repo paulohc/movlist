@@ -1,4 +1,4 @@
-package com.paulohc.movlist.ui.components
+package com.paulohc.movlist.ui.component
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -16,12 +16,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
-import com.paulohc.movlist.domain.MovieInfo
-import com.paulohc.movlist.util.Constants
+import com.paulohc.movlist.common.Constants
+import com.paulohc.movlist.data.model.Movie
 
 @Composable
 fun Section(
-    movies: List<MovieInfo>,
+    movies: List<Movie>,
     title: String? = null,
     onCardPress: ((Int) -> Unit)? = null,
 ) {

@@ -1,4 +1,4 @@
-package com.paulohc.movlist.util
+package com.paulohc.movlist.common
 
 object Constants {
     const val TMDB_BASE_URL = "https://api.themoviedb.org/3/"

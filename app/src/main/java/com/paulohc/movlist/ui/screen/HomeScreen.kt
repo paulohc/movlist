@@ -1,4 +1,4 @@
-package com.paulohc.movlist.ui.screens.home
+package com.paulohc.movlist.ui.screen
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -8,11 +8,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.paulohc.movlist.R
-import com.paulohc.movlist.ui.components.*
+import com.paulohc.movlist.ui.component.*
+import com.paulohc.movlist.ui.state.HomeUiState
 
 @Composable
 fun HomeScreen(
-    state: HomeState,
+    state: HomeUiState,
     fetchMovies: () -> Unit,
     navigateToDetails: (Int) -> Unit,
 ) {
