@@ -1,4 +1,4 @@
-package com.paulohc.movlist.ui.screens.details
+package com.paulohc.movlist.ui.screen
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -17,12 +17,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.paulohc.movlist.R
-import com.paulohc.movlist.ui.components.FallbackMessage
-import com.paulohc.movlist.util.Constants
+import com.paulohc.movlist.common.Constants
+import com.paulohc.movlist.ui.component.FallbackMessage
+import com.paulohc.movlist.ui.state.DetailsUiState
 
 @Composable
 fun DetailsScreen(
-    state: DetailsScreenState,
+    state: DetailsUiState,
     navigateBack: () -> Unit,
 ) {
     val movieDetails = state.movieDetails

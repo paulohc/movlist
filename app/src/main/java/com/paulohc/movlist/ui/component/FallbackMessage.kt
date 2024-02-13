@@ -1,4 +1,4 @@
-package com.paulohc.movlist.ui.components
+package com.paulohc.movlist.ui.component
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.MaterialTheme

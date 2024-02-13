@@ -1,4 +1,4 @@
-package com.paulohc.movlist.ui.components
+package com.paulohc.movlist.ui.component
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -16,8 +16,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
 import coil.compose.AsyncImage
-import com.paulohc.movlist.domain.MovieInfo
-import com.paulohc.movlist.util.Constants
+import com.paulohc.movlist.common.Constants
+import com.paulohc.movlist.data.model.Movie
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collectLatest
 import kotlin.math.absoluteValue
@@ -25,7 +25,7 @@ import kotlin.math.absoluteValue
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun InfiniteCarousel(
-    movies: List<MovieInfo>,
+    movies: List<Movie>,
     title: String? = null,
     onCardPress: ((Int) -> Unit)? = null,
 ) {

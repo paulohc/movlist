@@ -1,27 +1,20 @@
-package com.paulohc.movlist.ui.screens.home
+package com.paulohc.movlist.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.paulohc.movlist.domain.MovieInfo
-import com.paulohc.movlist.network.MovieService
+import com.paulohc.movlist.data.repository.MovieRepository
+import com.paulohc.movlist.ui.state.HomeUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-data class HomeState(
-    val trendingMovies: List<MovieInfo>? = null,
-    val popularMovies: List<MovieInfo>? = null,
-    val topRatedMovies: List<MovieInfo>? = null,
-    val upcomingMovies: List<MovieInfo>? = null,
-    val failedToFetchData: Boolean = false,
-)
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val service: MovieService,
+    private val movieRepository: MovieRepository,
 ) : ViewModel() {
-    private val _state = MutableStateFlow(HomeState())
+    private val _state = MutableStateFlow(HomeUiState())
     val state = _state.asStateFlow()
 
     fun fetchMovies() {
@@ -33,7 +26,7 @@ class HomeViewModel @Inject constructor(
 
     private fun fetchTrendingMovies() {
         viewModelScope.launch {
-            val result = service.getTrendingMovies()
+            val result = movieRepository.getTrendingMovies()
             _state.update {
                 it.copy(
                     trendingMovies = result.getOrNull()?.results,
@@ -45,7 +38,7 @@ class HomeViewModel @Inject constructor(
 
     private fun fetchPopularMovies() {
         viewModelScope.launch {
-            val result = service.getPopularMovies()
+            val result = movieRepository.getPopularMovies()
             _state.update {
                 it.copy(
                     popularMovies = result.getOrNull()?.results,
@@ -57,7 +50,7 @@ class HomeViewModel @Inject constructor(
 
     private fun fetchTopRatedMovies() {
         viewModelScope.launch {
-            val result = service.getTopRatedMovies()
+            val result = movieRepository.getTopRatedMovies()
             _state.update {
                 it.copy(
                     topRatedMovies = result.getOrNull()?.results,
@@ -69,7 +62,7 @@ class HomeViewModel @Inject constructor(
 
     private fun fetchUpcomingMovies() {
         viewModelScope.launch {
-            val result = service.getUpcomingMovies()
+            val result = movieRepository.getUpcomingMovies()
             _state.update {
                 it.copy(
                     upcomingMovies = result.getOrNull()?.results,

@@ -1,4 +1,4 @@
-package com.paulohc.movlist.ui.screens.search
+package com.paulohc.movlist.ui.screen
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -18,12 +18,13 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.paulohc.movlist.R
-import com.paulohc.movlist.ui.components.FallbackMessage
-import com.paulohc.movlist.util.Constants
+import com.paulohc.movlist.common.Constants
+import com.paulohc.movlist.ui.component.FallbackMessage
+import com.paulohc.movlist.ui.state.SearchUiState
 
 @Composable
 fun SearchScreen(
-    state: SearchScreenState,
+    state: SearchUiState,
     searchMovies: (String) -> Unit,
     navigateToDetails: (Int) -> Unit,
 ) {
