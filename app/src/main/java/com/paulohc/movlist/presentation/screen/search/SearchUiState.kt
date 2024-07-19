@@ -1,9 +1,7 @@
-package com.paulohc.movlist.ui.state
+package com.paulohc.movlist.presentation.screen.search
 
 import com.paulohc.movlist.data.model.Movie
-import javax.annotation.concurrent.Immutable
 
-@Immutable
 data class SearchUiState(
     val searchedMovies: List<Movie>? = null,
     val failedToFetchData: Boolean = false,

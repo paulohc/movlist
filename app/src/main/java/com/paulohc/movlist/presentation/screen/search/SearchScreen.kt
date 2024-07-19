@@ -1,4 +1,4 @@
-package com.paulohc.movlist.ui.screen
+package com.paulohc.movlist.presentation.screen.search
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -19,8 +19,7 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.paulohc.movlist.R
 import com.paulohc.movlist.common.Constants
-import com.paulohc.movlist.ui.component.FallbackMessage
-import com.paulohc.movlist.ui.state.SearchUiState
+import com.paulohc.movlist.presentation.component.FallbackMessage
 
 @Composable
 fun SearchScreen(

@@ -9,8 +9,9 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.paulohc.movlist.ui.screen.*
-import com.paulohc.movlist.ui.viewmodel.*
+import com.paulohc.movlist.presentation.screen.details.*
+import com.paulohc.movlist.presentation.screen.home.*
+import com.paulohc.movlist.presentation.screen.search.*
 
 @Composable
 fun RootNavGraph(

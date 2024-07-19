@@ -1,14 +1,12 @@
-package com.paulohc.movlist.ui.viewmodel
+package com.paulohc.movlist.presentation.screen.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.paulohc.movlist.data.repository.MovieRepository
-import com.paulohc.movlist.ui.state.SearchUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*
 import javax.inject.Inject
-
 
 private const val DEBOUNCE_TIME_MILLIS = 500L
 

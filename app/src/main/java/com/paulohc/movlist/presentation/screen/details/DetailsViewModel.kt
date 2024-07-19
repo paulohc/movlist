@@ -1,15 +1,13 @@
-package com.paulohc.movlist.ui.viewmodel
+package com.paulohc.movlist.presentation.screen.details
 
 import androidx.lifecycle.*
 import androidx.navigation.toRoute
 import com.paulohc.movlist.data.repository.MovieRepository
 import com.paulohc.movlist.navigation.Screen
-import com.paulohc.movlist.ui.state.DetailsUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-
 
 @HiltViewModel
 class DetailsViewModel @Inject constructor(

@@ -1,9 +1,7 @@
-package com.paulohc.movlist.ui.state
+package com.paulohc.movlist.presentation.screen.home
 
 import com.paulohc.movlist.data.model.Movie
-import javax.annotation.concurrent.Immutable
 
-@Immutable
 data class HomeUiState(
     val trendingMovies: List<Movie>? = null,
     val popularMovies: List<Movie>? = null,

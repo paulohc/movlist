@@ -1,4 +1,4 @@
-package com.paulohc.movlist.ui.component
+package com.paulohc.movlist.presentation.component
 
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
@@ -22,7 +22,6 @@ import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collectLatest
 import kotlin.math.absoluteValue
 
-@OptIn(ExperimentalFoundationApi::class)
 @Composable
 fun InfiniteCarousel(
     movies: List<Movie>,
