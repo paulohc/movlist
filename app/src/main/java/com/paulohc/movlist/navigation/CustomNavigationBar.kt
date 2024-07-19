@@ -9,6 +9,8 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavDestination.Companion.hasRoute
+import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
@@ -25,14 +27,20 @@ fun CustomNavigationBar(
         CustomNavigationBarItem.Search,
     )
 
-    val shouldShowBar = items.any { it.screen.routePrefix == currentDestination?.route }
+    val shouldShowBar = items.any { item ->
+        currentDestination?.hierarchy?.any {
+            it.hasRoute(item.screen::class)
+        } == true
+    }
 
     if (shouldShowBar) {
         NavigationBar(
             modifier = Modifier.heightIn(95.dp)
         ) {
             items.forEach { item ->
-                val isSelected = currentDestination?.route == item.screen.routePrefix
+                val isSelected = currentDestination?.hierarchy?.any {
+                    it.hasRoute(item.screen::class)
+                } == true
                 val title = stringResource(id = item.title)
                 NavigationBarItem(
                     icon = {
@@ -55,7 +63,7 @@ fun CustomNavigationBar(
                     },
                     selected = isSelected,
                     onClick = {
-                        navController.navigate(item.screen.routePrefix) {
+                        navController.navigate(item.screen) {
                             popUpTo(navController.graph.findStartDestination().id) {
                                 saveState = true
                             }

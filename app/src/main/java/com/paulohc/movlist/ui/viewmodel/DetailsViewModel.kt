@@ -1,8 +1,9 @@
 package com.paulohc.movlist.ui.viewmodel
 
 import androidx.lifecycle.*
+import androidx.navigation.toRoute
 import com.paulohc.movlist.data.repository.MovieRepository
-import com.paulohc.movlist.navigation.ARG_MOVIE_ID
+import com.paulohc.movlist.navigation.Screen
 import com.paulohc.movlist.ui.state.DetailsUiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*
@@ -18,7 +19,7 @@ class DetailsViewModel @Inject constructor(
     private val _state = MutableStateFlow(DetailsUiState())
     val state = _state.asStateFlow()
 
-    private val movieId: Int = checkNotNull(savedStateHandle[ARG_MOVIE_ID])
+    private val movieId: Int = savedStateHandle.toRoute<Screen.Details>().movieId
 
     init {
         fetchMovieDetails()

@@ -8,6 +8,7 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import com.paulohc.movlist.ui.screen.*
 import com.paulohc.movlist.ui.viewmodel.*
 
@@ -19,11 +20,11 @@ fun RootNavGraph(
 ) {
     NavHost(
         navController = navController,
-        startDestination = startDestination.routePrefix,
+        startDestination = startDestination,
         modifier = modifier
             .background(MaterialTheme.colorScheme.primaryContainer),
     ) {
-        composable(Screen.Home) {
+        composable<Screen.Home> {
             val viewModel: HomeViewModel = hiltViewModel()
             val state = viewModel.state.collectAsStateWithLifecycle().value
             HomeScreen(
@@ -31,12 +32,12 @@ fun RootNavGraph(
                 fetchMovies = viewModel::fetchMovies,
                 navigateToDetails = {
                     navController.navigate(
-                        Screen.Details.withArgs(movieId = it)
+                        Screen.Details(movieId = it)
                     )
                 }
             )
         }
-        composable(Screen.Search) {
+        composable<Screen.Search> {
             val viewModel: SearchViewModel = hiltViewModel()
             val state = viewModel.state.collectAsStateWithLifecycle().value
             SearchScreen(
@@ -44,12 +45,12 @@ fun RootNavGraph(
                 searchMovies = viewModel::searchMovies,
                 navigateToDetails = {
                     navController.navigate(
-                        Screen.Details.withArgs(movieId = it)
+                        Screen.Details(movieId = it)
                     )
                 }
             )
         }
-        composable(Screen.Details) {
+        composable<Screen.Details> {
             val viewModel: DetailsViewModel = hiltViewModel()
             val state = viewModel.state.collectAsStateWithLifecycle().value
             DetailsScreen(
