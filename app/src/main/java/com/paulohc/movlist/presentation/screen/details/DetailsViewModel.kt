@@ -2,7 +2,7 @@ package com.paulohc.movlist.presentation.screen.details
 
 import androidx.lifecycle.*
 import androidx.navigation.toRoute
-import com.paulohc.movlist.data.repository.MovieRepository
+import com.paulohc.movlist.domain.repository.MovieRepository
 import com.paulohc.movlist.navigation.Screen
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.*

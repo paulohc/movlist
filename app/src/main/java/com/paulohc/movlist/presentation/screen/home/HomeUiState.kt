@@ -1,6 +1,6 @@
 package com.paulohc.movlist.presentation.screen.home
 
-import com.paulohc.movlist.data.model.Movie
+import com.paulohc.movlist.domain.model.Movie
 
 data class HomeUiState(
     val trendingMovies: List<Movie>? = null,

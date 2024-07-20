@@ -1,4 +1,4 @@
-package com.paulohc.movlist.data.model
+package com.paulohc.movlist.domain.model
 
 data class Movie(
     val backdropPath: String?,

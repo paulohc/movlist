@@ -2,7 +2,7 @@ package com.paulohc.movlist.presentation.screen.search
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.paulohc.movlist.data.repository.MovieRepository
+import com.paulohc.movlist.domain.repository.MovieRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.*

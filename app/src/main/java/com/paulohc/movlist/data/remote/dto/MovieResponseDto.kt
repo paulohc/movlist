@@ -1,7 +1,6 @@
 package com.paulohc.movlist.data.remote.dto
 
 import com.google.gson.annotations.SerializedName
-import com.paulohc.movlist.data.model.MovieResponse
 
 data class MovieResponseDto(
     @SerializedName("page")
@@ -13,12 +12,3 @@ data class MovieResponseDto(
     @SerializedName("total_results")
     val totalResults: Int,
 )
-
-fun MovieResponseDto.toMovieResponse(): MovieResponse {
-    return MovieResponse(
-        page = page,
-        results = results.map { it.toMovie() },
-        totalPages = totalPages,
-        totalResults = totalResults,
-    )
-}

@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
 import com.paulohc.movlist.common.Constants
-import com.paulohc.movlist.data.model.Movie
+import com.paulohc.movlist.domain.model.Movie
 
 @Composable
 fun Section(

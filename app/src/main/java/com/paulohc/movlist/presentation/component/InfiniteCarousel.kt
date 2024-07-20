@@ -17,7 +17,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.util.lerp
 import coil.compose.AsyncImage
 import com.paulohc.movlist.common.Constants
-import com.paulohc.movlist.data.model.Movie
+import com.paulohc.movlist.domain.model.Movie
 import kotlinx.coroutines.*
 import kotlinx.coroutines.flow.collectLatest
 import kotlin.math.absoluteValue

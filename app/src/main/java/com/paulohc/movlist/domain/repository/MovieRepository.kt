@@ -1,7 +1,7 @@
-package com.paulohc.movlist.data.repository
+package com.paulohc.movlist.domain.repository
 
-import com.paulohc.movlist.data.model.Movie
-import com.paulohc.movlist.data.model.MovieResponse
+import com.paulohc.movlist.domain.model.Movie
+import com.paulohc.movlist.domain.model.MovieResponse
 
 
 interface MovieRepository {

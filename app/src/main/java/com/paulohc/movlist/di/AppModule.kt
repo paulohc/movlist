@@ -4,8 +4,8 @@ import android.content.Context
 import com.paulohc.movlist.common.Constants
 import com.paulohc.movlist.data.remote.AuthInterceptor
 import com.paulohc.movlist.data.remote.MovieApi
-import com.paulohc.movlist.data.repository.MovieRepository
 import com.paulohc.movlist.data.repository.MovieRepositoryImpl
+import com.paulohc.movlist.domain.repository.MovieRepository
 import com.skydoves.retrofit.adapters.result.ResultCallAdapterFactory
 import dagger.Module
 import dagger.Provides

@@ -2,7 +2,6 @@ package com.paulohc.movlist.data.remote.dto
 
 
 import com.google.gson.annotations.SerializedName
-import com.paulohc.movlist.data.model.Movie
 
 data class MovieDto(
     @SerializedName("adult")
@@ -34,15 +33,3 @@ data class MovieDto(
     @SerializedName("vote_count")
     val voteCount: Int,
 )
-
-fun MovieDto.toMovie(): Movie {
-    return Movie(
-        backdropPath = backdropPath,
-        id = id,
-        overview = overview,
-        posterPath = posterPath,
-        releaseDate = releaseDate,
-        title = title,
-        voteAverage = voteAverage,
-    )
-}
