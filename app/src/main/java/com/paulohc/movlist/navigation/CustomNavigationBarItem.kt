@@ -2,10 +2,8 @@ package com.paulohc.movlist.navigation
 
 import androidx.annotation.StringRes
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.filled.Search
-import androidx.compose.material.icons.outlined.Home
-import androidx.compose.material.icons.outlined.Search
+import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.outlined.*
 import androidx.compose.ui.graphics.vector.ImageVector
 import com.paulohc.movlist.R
 
@@ -27,5 +25,12 @@ sealed class CustomNavigationBarItem(
         title = R.string.search,
         selectedIcon = Icons.Filled.Search,
         unselectedIcon = Icons.Outlined.Search,
+    )
+
+    data object About : CustomNavigationBarItem(
+        screen = Screen.About,
+        title = R.string.about,
+        selectedIcon = Icons.Filled.Info,
+        unselectedIcon = Icons.Outlined.Info,
     )
 }

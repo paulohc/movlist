@@ -16,4 +16,7 @@ sealed class Screen {
     data class Details(
         val movieId: Int,
     ) : Screen()
+
+    @Serializable
+    data object About : Screen()
 }

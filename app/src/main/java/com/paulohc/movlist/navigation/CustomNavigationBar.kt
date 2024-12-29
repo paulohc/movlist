@@ -25,6 +25,7 @@ fun CustomNavigationBar(
     val items = listOf(
         CustomNavigationBarItem.Home,
         CustomNavigationBarItem.Search,
+        CustomNavigationBarItem.About,
     )
 
     val shouldShowBar = items.any { item ->
